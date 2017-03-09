@@ -43,32 +43,20 @@ describe Account do
 
   end
 
-  describe "Transactions" do
-    it "able to store account activity" do
-      expect(account).to respond_to(:transactions)
-    end
-  end
+  # describe "Transactions" do
+  #   it "able to store account activity" do
+  #     expect(account).to respond_to(:transactions)
+  #   end
+  # end
 
-  describe "debit and credit activity" do
+  describe "Statements" do
     it "able to record debit and credit activity" do
       account.deposit(100)
       account.withdrawl(50)
-      expect(account.transactions).to eq([["09/03/2017", 100, "", 100],["09/03/2017", "", 50, 50]])
+      expect(account.statement).to include(["09/03/2017", 0, 50, 50])
     end
   end
 
-  describe "Statements" do
-    it "able to store account activity" do
-      expect(account).to respond_to(:statement)
-    end
-
-    it "able to store account activity" do
-      account.deposit(100)
-      account.withdrawl(50)
-      expect(account.statement).to include(["09/03/2017", 100, "", 100])
-    end
-
-  end
 
 
 

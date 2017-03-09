@@ -2,7 +2,11 @@
 
 class Account
 
-attr_reader :balance, :transactions, :date
+attr_reader :balance
+
+
+HEADERS = %w{date credit debit balance}
+ SEPERATOR = " || "
 
   def initialize()
     @balance = 0
@@ -12,22 +16,38 @@ attr_reader :balance, :transactions, :date
 
   def deposit(credit)
     @credit = credit
-    @balance += @credit
-    @transactions << [@date, @credit, '', @balance]
+    @debit = 0
+    transaction
   end
 
   def withdrawl(debit)
     raise "Insufficient funds: Please make another selection" if debit > @balance
     @debit = debit
-    @balance -= @debit
-    @transactions << [@date, '', @debit, @balance]
+    @credit = 0
+    transaction
   end
 
   def statement
-    puts "date       " + "||" + " credit   " + "||" + " debit    " + "||" + " balance  "
-    @transactions.each do |x|
-    puts  " #{[x][0]}" + "||" + " #{[x][1]}  " + "||" + " #{[x][2]} " + "||" + " #{[x][3]} "
-    end
+    @transactions
   end
+
+
+private
+
+
+  def transaction
+    @balance += (@credit - @debit)
+    @activity = [@date, @credit, @debit, @balance]
+    transactions
+  end
+
+  def transactions
+      @transactions << @activity
+  end
+
+  def header
+      HEADERS.join(SEPERATOR)
+  end
+
 
 end
