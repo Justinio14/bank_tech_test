@@ -1,7 +1,9 @@
 class DateStamp
 
- def date_today
-   Time.now.strftime("%m/%d/%Y")
+  attr_reader :transaction_date
+
+ def initialize
+   @transaction_date = Time.now.strftime("%d/%m/%Y")
  end
 
 end

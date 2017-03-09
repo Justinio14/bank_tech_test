@@ -6,12 +6,12 @@ describe DateStamp do
   let(:date) {described_class.new }
 
     it "shows date" do
-    expect(date).to respond_to(:date_today)
+    expect(date).to respond_to(:transaction_date)
   end
 
   describe "it records date" do
     it "shows todays date" do
-      expect(date.date_today).to eq(Time.now.strftime("%m/%d/%Y"))
+      expect(date.transaction_date).to eq(Time.now.strftime("%d/%m/%Y"))
     end
   end
 
