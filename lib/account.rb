@@ -2,11 +2,10 @@
 
 class Account
 
-attr_reader :balance
-
+  attr_reader :balance
 
 HEADERS = %w{date credit debit balance}
- SEPERATOR = " || "
+SEPERATOR = " || "
 
   def initialize()
     @balance = 0
@@ -27,6 +26,10 @@ HEADERS = %w{date credit debit balance}
     transaction
   end
 
+  def balance_check
+    @balance += (@credit - @debit)
+  end
+
   def statement
     @transactions
   end
@@ -34,15 +37,9 @@ HEADERS = %w{date credit debit balance}
 
 private
 
-
   def transaction
-    @balance += (@credit - @debit)
-    @activity = [@date, @credit, @debit, @balance]
-    transactions
-  end
-
-  def transactions
-      @transactions << @activity
+    balance_check
+    @transactions << [@date, @credit, @debit, @balance]
   end
 
   def header
