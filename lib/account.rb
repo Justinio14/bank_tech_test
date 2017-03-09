@@ -16,4 +16,6 @@ attr_reader :balance
     @debit = debit
     @balance -= @debit
   end
+
+
 end

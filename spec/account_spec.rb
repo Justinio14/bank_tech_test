@@ -16,7 +16,6 @@ describe Account do
   end
 
 
-
   describe "deposit money" do
     it "able to add money" do
       expect(account).to respond_to(:deposit).with(1).argument
@@ -43,5 +42,6 @@ describe Account do
       end
 
   end
+
 
 end
