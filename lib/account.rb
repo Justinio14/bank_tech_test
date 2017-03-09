@@ -12,6 +12,7 @@ attr_reader :balance
   end
 
   def withdrawl(debit)
+    raise "Insufficient funds: Please make another selection" if debit > @balance
     @debit = debit
     @balance -= @debit
   end

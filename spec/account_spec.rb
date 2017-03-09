@@ -1,5 +1,6 @@
 require 'account'
 
+
 describe Account do
 
   let(:account) {described_class.new }
@@ -32,9 +33,15 @@ describe Account do
     end
 
     it "a 500 withdrawl decreases balance by 500" do
-      account.deposit(100)
+      account.deposit(1000)
       expect{account.withdrawl(500)}.to change{account.balance}.by(-500)
     end
+
+      it "a raises and error if withdrawl amount exceeds balance " do
+        account.deposit(100)
+        expect{account.withdrawl(200)}.to raise_error("Insufficient funds: Please make another selection")
+      end
+
   end
 
 end
