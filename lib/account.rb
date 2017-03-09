@@ -24,7 +24,10 @@ attr_reader :balance, :transactions, :date
   end
 
   def statement
-
+    puts "date       " + "||" + " credit   " + "||" + " debit    " + "||" + " balance  "
+    @transactions.each do |x|
+    puts  " #{[x][0]}" + "||" + " #{[x][1]}  " + "||" + " #{[x][2]} " + "||" + " #{[x][3]} "
+    end
   end
 
 end
